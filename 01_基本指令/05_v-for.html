@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>非常常用的指令 v-for</h1>
+        <h1>循环遍历数字</h1>
+        <h2 v-for="item in 2">我是二级标题{{item}}</h2>
+        <h1>循环遍历数组</h1>
+        <ul>
+            <li v-for="(item, index) in arr">{{item}}====={{index}}</li>
+        </ul>
+        <table>
+            <tr v-for="row in 9">
+                <td v-for="col in 9">小明</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            arr: ['吃饭', '睡觉', '打豆豆']
+        }
+    });
+</script>
+</html>

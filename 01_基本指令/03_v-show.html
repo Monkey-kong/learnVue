@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>吃饭</li>
+            <li v-show="3 > 8">睡觉</li>
+            <li>打豆豆</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        date: {
+
+        }
+    });
+</script>

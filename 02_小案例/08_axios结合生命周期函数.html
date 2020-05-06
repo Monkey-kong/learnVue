@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/axios.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in postList">{{item.name}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            postList: []
+        },
+        // 生命周期函数：实例已经和模板挂载完毕
+        mounted() {
+            // 向服务器拉取数据
+            axios.get("./jieyong.txt").then(obj => {
+                this.postList = obj.data.postList;
+            });
+        }
+    });
+</script>
+</html>

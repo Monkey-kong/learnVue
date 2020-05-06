@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>下面是指令操作文本</h1>
+        <p v-text="msg"></p>
+        <hr>
+        <!-- v-text 的简写 -->
+        <p>{{msg}}</p>
+        <!-- 如果是标签形式，直接渲染 -->
+        <p v-html="msg"></p>
+    </div>
+</body>
+</html>
+<script>
+    var vue = new Vue({
+        el: "#app",
+        data: {
+            msg: "<a href='http://www/baidu.com'>百度</a>"
+        }
+    });
+</script>

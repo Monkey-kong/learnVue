@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{url}} -->
+        <h1>请你输入想搜索的内容：<input type="text" v-model="url"></h1>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            url: "",
+            arr: []
+        },
+        watch: {
+            url(a) {
+                // 将最新的数值作为参数注入
+                var path = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + a + "&cb=a";
+
+                // JSONP 跨域拉取数据
+                // 实现原理：
+                // 利用 script 标签 src 属性
+                // 利用函数声明+调用放在两个不同的服务器上面
+                // 动态创建 script
+                var script = document.createElement("script");
+                // 设置 script src 属性
+                script.src = path;
+                // 标签上树将请求发出去
+                document.body.appendChild(script);
+            }
+        }
+    });
+    // 声明一个同名函数
+    function a(obj) {
+        console.log(obj);
+        // 修改 vue 实例 arr 属性值
+        vm.arr = obj.s;
+    }
+</script>
+</html>

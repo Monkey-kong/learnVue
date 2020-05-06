@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>生命周期函数-------{{msg}}</h1>
+        <button @click="add">单击我我加上1</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: 1
+        },
+        methods: {
+            add() {
+                this.msg++;
+            }
+        },
+        watch: {},
+        // 生命周期函数
+        beforeCreate() {
+            // 在创建实例之前执行一次，这里访问不到实例的 data 数据
+            console.log("beforeCreate 在创建 vm 之前执行一次" + this.msg);
+        },
+        created() {
+            // 在实例创建完毕后立即执行一次
+            console.log("created 在创建 vm 后立即执行一次" + this.msg)
+        },
+        beforeMount() {
+            // 在实例创建完毕且和模板进行关联之前执行一次
+            console.log("beforeMount 我是 vm 即将和模板进行关联" + this.msg)
+        },
+        mounted() {
+            // 在实际工作中经常从这个生命周期函数拉取服务器数据
+            console.log("mounted 我是 vm 我已经和模板关联完毕" + this.msg);
+        },
+        beforeUpdate() {
+            console.log("beforeUpdate 当数据发生变化时立即执行一次" + this.msg);
+        },
+        updated() {
+            console.log("updated 当数据发生变化后立即执行一次" + this.msg)
+        }
+    });
+</script>
+</html>

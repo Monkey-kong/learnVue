@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #app {
+            width: 80%;
+            height: 400px;
+            background-color: skyblue;
+            margin: 10px auto;
+        }
+        .cur {
+            width: 400px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>我是王健林-----{{liwu}}</h1>
+        <!-- 通过自定义事件 gift 接收子组件数据 -->
+        <wsc class="cur" @gift="show($event)"></wsc>
+    </div>
+    <!-- 子组件模板 -->
+    <template id="wsc">
+        <div>
+            <h1>我是王思聪</h1>
+            <button @click="send">把熊猫TV送给父亲</button>
+        </div>
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            liwu: ''
+        },
+        methods: {
+            // 展示儿子礼物
+            show(liwu){
+                this.liwu = liwu;
+            }
+        },
+        components: {
+            // 组件 wsc
+            wsc: {
+                template: "#wsc",
+                data() {
+                    return{
+                        msg: "熊猫TV"
+                    }
+                },
+                methods: {
+                    // 给父亲传递数据的方法
+                    send() {
+                        // 触发自定义事件，通过组件的 $emit 方法
+                        this.$emit("gift", this.msg);
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

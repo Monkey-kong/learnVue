@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        #app {
+            width: 80%;
+            height: 300px;
+            background-color: red;
+            border: 2px;
+            margin: 0 auto;
+        }
+        .cur {
+            width: 400px;
+            height: 200px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>我是最大的根组件。。。{{msg}}</h1>
+        <son class="cur" :msg="msg"  :car="car"></son>
+    </div>
+    <template id="son">
+        <div>
+            <h1>我是子组件...{{msg}}</h1>
+            {{car}}
+        </div>
+    </template>
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "lalallaa",
+            car: "奔驰"
+        },
+        components: {
+            son: {
+                template: "#son",
+                props:["msg","car"]
+
+            }
+        }
+    });
+</script>
+</html>

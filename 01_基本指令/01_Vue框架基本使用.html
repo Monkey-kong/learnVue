@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入 vue 源码 -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>我是 Alvin，我今年{{age}}岁了</h1>
+    </div>
+</body>
+
+</html>
+<script>
+    // vue 框架对外暴露了一个 vue 构造函数
+    var vm = new Vue({
+        // el:挂载点设置，将 vue 实例和结构层标签进行挂载
+        el: "#app",
+        // 实例数据来源
+        data: {
+            age: 100
+        }
+    });
+    // 修改实例 age 属性值，页面会直接对应修改
+    vm.age = 999;
+</script>

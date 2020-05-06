@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 颜色变化元素 -->
+        <div :style="{width:'400px',height:'100px',
+            background:`rgb(${R},${G},${B})`}"></div>
+        <!-- 三个范围条 -->
+        <p>
+            R：<input type="range" min="0" max="255" value="0" v-model="R"><span>{{R}}</span>
+        </p>
+        <p>
+            G：<input type="range" min="0" max="255" value="0" v-model="G"><span>{{G}}</span>
+        </p>
+        <p>
+            B：<input type="range" min="0" max="255" value="0" v-model="B"><span>{{B}}</span>
+        </p>
+    </div>
+</body>
+<SCript>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            R: 0,
+            G: 0,
+            B: 0
+        }
+    });
+</SCript>
+</html>

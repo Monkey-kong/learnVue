@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- @click 绑定事件 -->
+        <button @click="add('军事')">军事</button>
+        <button @click="add('新闻')">新闻</button>
+        <button @click="add('直播')">直播</button>
+        <ul v-show="'军事'==info">
+            <li>军事军事</li>
+            <li>军事军事</li>
+            <li>军事军事</li>
+        </ul>
+        <ul v-show="'新闻'==info">
+            <li>新闻新闻</li>
+            <li>新闻新闻</li>
+            <li>新闻新闻</li>
+        </ul>
+        <ul v-show="'直播'==info">
+            <li>直播直播</li>
+            <li>直播直播</li>
+            <li>直播直播</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            info: "军事"
+        },
+        // 函数
+        methods: {
+            add(a) {
+                // 修改 vue 实例的属性值
+                this.info = a;
+            }
+        }
+    });
+</script>
