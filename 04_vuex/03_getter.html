@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        已完成任务列表:{{$store.getters.doneTodos}}
+        已完成任务个数:<h1>{{$store.getters.doneTodosCount}}</h1>
+        通过ID获取任务:{{$store.getters.getTodoById(2) }}
+    </div>
+</body>
+<script>
+// 定义状态库    
+const store = new Vuex.Store({
+    state: {
+        // 所有任务列表
+        todos: [
+            { id: 1, text: '...', done: false },
+            { id: 2, text: '...', done: true },
+            { id: 3, text: '...', done: true }
+        ]        
+    },
+    // 类似 vue 的 computed
+    getters: {
+        // 已处理列表
+        doneTodos: state => {
+            return state.todos.filter(todo => todo.done)
+        },
+        // 已处理个数
+        doneTodosCount: (state, getters) => {
+            return getters.doneTodos.length
+        },
+        // 返回一个函数
+        getTodoById: (state) => (id) => {
+            return state.todos.find(todo => todo.id === id)
+        }                
+    }
+});
+
+var vm = new Vue({
+        el: "#app",
+        computed: {
+            doneTodosCount () {
+                // 通过属性访问状态
+                return this.$store.getters.doneTodosCount
+            }
+        },
+        // 这种形式会注册到所有子组件
+        store
+    });
+</script>
+</html>

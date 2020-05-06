@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="app">
+            <h1>{{count}}</h1>
+            <button @click="increment">count+1</button>
+        </div>
+    </div>
+</body>
+<script>
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        mutations: {
+            increment(state){
+                state.count++;
+            }
+        }
+    });
+    var vm = new Vue({
+        el: "#app",
+        computed: {
+            // 计算属性实现绑定 state
+            count(){
+                return store.state.count;
+            }
+        },
+        methods: {
+            increment() {
+                this.$store.commit('increment')
+            }
+        },
+        // 这种形式会注册到所有子组件
+        store
+    });
+</script>
+</html>
