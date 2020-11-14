@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vuex.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{$store.state.count}}</h1>
+        <button @click="increment">dispatchByNormal</button>
+        <button @click="incrementAsync">incrementAsync</button>
+    </div>
+</body>
+<script type="module">
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment(state){
+            state.count++
+        }
+    },
+    actions: {
+        // 定义 action；context 是 store 对象的一个副本
+        increment(context){
+            context.commit('increment')
+        },
+        // action 可以执行异步操作
+        incrementAsync({commit}){
+            setTimeout(()=>{
+                commit('increment')
+            }, 1000)
+        }
+    }
+});
+
+// import { mapActions } from 'vuex'
+var vm = new Vue({
+    el: "#app",
+    methods: {
+        // dispatchByNormal(){
+        //     this.$store.dispatch('incrementAsync');
+        // },
+        ...Vuex.mapActions(['increment','incrementAsync'])
+    },
+    store
+})
+</script>
+</html>

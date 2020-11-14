@@ -54,6 +54,7 @@
                 },
                 // 生命周期函数接收
                 mounted() {
+                    // 接受数据组件绑定监听事件
                     this.$bus.$on("sendCar", ($event)=>{
                         this.info = $event;
                     })
@@ -68,6 +69,7 @@
                 },
                 methods: {
                     sendCar() {
+                        // 通过中央管道发送数据
                         this.$bus.$emit("sendCar", this.car);
                     }
                 }

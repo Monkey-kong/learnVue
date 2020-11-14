@@ -27,7 +27,7 @@ const store = new Vuex.Store({
   }
 });
 
-// 修改状态
+// 修改状态。只能显示 commit 实现
 store.commit('increment')
 store.commit('increment')
 // 获取状态
@@ -43,6 +43,7 @@ var vm = new Vue({
             console.log(this.$store.state.count)
         }
     },
+    // 为 vue 实例提供 store
     store: store,
     computed: {
 

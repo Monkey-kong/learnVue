@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="ppa">
     <h1>{{count}}</h1>
     <!-- 使用子组件 -->
     <son></son>
@@ -11,22 +11,22 @@
 
 <script>
 // 根组件引入其他组件
-import son from "./components/son";
+import son from './components/son'
 
 export default {
   // 模板自动绑定了，无需手动绑定
   // 一个组件一个模板，一个模板一个文件
   // 当前组件的数据
   name: 'App',
-  data() {
+  data () {
     return {
       count: 1
     }
   },
   methods: {
     // 事件处理函数
-    add() {
-      this.count++;
+    add () {
+      this.count++
     }
   },
   // 当前组件挂载子组件
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style>
-#app {
+#ppa {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="app">
-        已完成任务列表:{{$store.getters.doneTodos}}
-        已完成任务个数:<h1>{{$store.getters.doneTodosCount}}</h1>
-        通过ID获取任务:{{$store.getters.getTodoById(2) }}
+        已完成任务列表:{{doneTodos}}<hr>
+        已完成任务个数:<h1>{{doneTodosCount}}</h1><hr>
+        通过ID获取任务:{{getTodoById(2)}}
     </div>
 </body>
 <script>
@@ -44,12 +44,12 @@ const store = new Vuex.Store({
 var vm = new Vue({
         el: "#app",
         computed: {
-            doneTodosCount () {
-                // 通过属性访问状态
-                return this.$store.getters.doneTodosCount
-            }
+            // doneTodosCount () {
+            //     // 通过属性访问状态
+            //     return this.$store.getters.doneTodosCount
+            // },
+            ...Vuex.mapGetters(['doneTodosCount','doneTodos','getTodoById'])
         },
-        // 这种形式会注册到所有子组件
         store
     });
 </script>

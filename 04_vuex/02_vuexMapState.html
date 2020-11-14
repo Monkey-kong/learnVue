@@ -9,12 +9,16 @@
 <body>
     <div id="app">
         <div id="app">
-            <h1>{{count}}</h1>
+            <h1>count：{{count}}</h1>
+            <h1>countPlusLocalState：{{countPlusLocalState}}</h1>
             <button @click="increment">count+1</button>
         </div>
     </div>
 </body>
 <script>
+
+    // import { mapState } from 'vuex'
+
     const store = new Vuex.Store({
         state: {
             count: 0
@@ -26,31 +30,30 @@
         }
     });
 
-    // 1. 全局变量方式获取
-    // var vm = new Vue({
-    //     el: "#app",
-    //     computed: {
-    //         // 计算属性实现绑定 state
-    //         count(){
-    //             return store.state.count;
-    //         }
-    //     },
-    //     methods: {
-    //         increment() {
-    //             store.commit('increment')
-    //         }
-    //     }
-    // });
-
-    // 2. 全局注册形式获取
     var vm = new Vue({
         el: "#app",
+        data: {
+            localCount: 2
+        },
         computed: {
             // 计算属性实现绑定 state
-            count(){
-                // this.$store 访问 store
-                return this.$store.state.count;
-            }
+            // count(){
+            //     return this.$store.state.count;
+            // }
+
+            // 映射 this.count 为 store.state.count
+            // 名字相同时，可以直接用数组
+            // ...Vuex.mapState(['count'])
+            // 不同时用对象
+            ...Vuex.mapState({
+                count: state => state.count,
+                // 啥意思？
+                countAlias: 'count',
+                // 要使用 this 访问局部变量时，必须使用常规函数
+                countPlusLocalState(state) {
+                    return state.count + this.localCount
+                }
+            })
         },
         methods: {
             increment() {

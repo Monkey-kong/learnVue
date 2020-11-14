@@ -24,7 +24,7 @@
         watch: {
             url(a) {
                 // 将最新的数值作为参数注入
-                var path = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + a + "&cb=a";
+                var path = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + a + "&cb=callback";
 
                 // JSONP 跨域拉取数据
                 // 实现原理：
@@ -40,7 +40,7 @@
         }
     });
     // 声明一个同名函数
-    function a(obj) {
+    function callback(obj) {
         console.log(obj);
         // 修改 vue 实例 arr 属性值
         vm.arr = obj.s;
