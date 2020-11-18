@@ -1,24 +1,18 @@
 <template>
-    <div><h1>this is App</h1></div>
+  <MainHeader />
 </template>
 
 <script>
-// 导入图片
-import img from './assets/images/bg.jpg'
-// 导入小图片，测试 url-loader
-import './assets/images/test.svg'
-// 导入 css
-// import './assets/styles/test.css'
-// 导入 stylus 样式文件
-import './assets/styles/global.stylus'
+  // 导入 stylus 样式文件，设置全局背景
+  // import './assets/styles/global.stylus'
+  // 导入 MainHeader 组件
+  import MainHeader from './components/MainHeader.vue'
 
-export default {
-    name: 'App'
-}
+  export default {
+    name: 'App',
+    components: {
+      // 引入组件
+      MainHeader,
+    },
+  }
 </script>
-
-<style lang="stylus" scoped>
-    h1 
-        color: white
-        transform: translate(100px, 100px)
-</style>
