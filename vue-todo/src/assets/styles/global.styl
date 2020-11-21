@@ -1,3 +1,7 @@
+*
+  margin: 0
+  padding: 0
+
 body
   // 背景图片
   background-image: url('../images/bg.jpg')
@@ -11,3 +15,11 @@ body
   background-size: cover
   // 当背景没有加载时的颜色
   background-color: #fff
+  font: 14px 'microsoft yehei'
+  font-weight: 300
+
+// 在移动端使用如此大的图片完全是浪费资源，大图会导致加载变慢，尤其是在移动网络下。
+// 在移动端可以另设一张相对小一点的图片使用媒体查询
+@media only screen and (max-width: 767px)
+  body
+    background-image: url('../images/mobile_bg.jpg')

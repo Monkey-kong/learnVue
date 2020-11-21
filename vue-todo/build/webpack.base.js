@@ -60,7 +60,8 @@ module.exports = {
             // 指定使用 vue.js，因为默认导出的是 runtime 包
             'vue': 'vue/dist/vue.js',
             '@': path.resolve(__dirname, '../src'),
-            'styles': path.resolve(__dirname, '../src/assets/styles')
+            'styles': path.resolve(__dirname, '../src/assets/styles'),
+            'images': path.resolve(__dirname, '../src/assets/images')
         }
     }
 }
